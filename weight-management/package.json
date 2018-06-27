@@ -2,12 +2,14 @@
   "name": "weight-management",
   "version": "1.0.0",
   "description": "welcome withham's weight management program!",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
+    "express": "^4.16.3",
     "tui-chart": "^3.1.2"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

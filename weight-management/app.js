@@ -10,7 +10,10 @@ var connection = mySql.createConnection({
 
 var express=require('express');
 var app = express();
-app.use(express.static('public')); //정적 폴더 public
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
 app.get('/memberdata', function(req, res){
     connection.query('SELECT * from Member', function(err, rows) {
         if(err) {
@@ -22,7 +25,12 @@ app.get('/memberdata', function(req, res){
     });
 })
 
-app.get('/', function(req, res){ 
-    res.send(index.html); // "public/index.html"로 리다이랙트
-})
+app.get('/', function(req, res) { 
+    connection.query('SELECT * FROM Weight', function (err, result, fields) {
+        if (err) throw err;
+        res.render('index', {weights: result});
+    });
+});
+
+app.use(express.static('public')); //정적 폴더 public
 app.listen(3000, function(){ });// 3000 포트

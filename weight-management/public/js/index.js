@@ -1,10 +1,18 @@
 var container = document.getElementById('chart-area');
+  
+var weight_categories = [];
+var weight_data = [];
+for(var i=0; i<weights.length; i++){
+    weight_categories.push(weights[i].register_ymdt);
+    weight_data.push(weights[i].weight);
+}
+
 var data = {
-    categories: ['2018-06-20', '2018-06-21', '2018-06-22', '2018-06-23', '2018-06-24', '2018-06-25', '2018-06-26' ], 
+    categories: weight_categories, 
     series: [
         {
             name: '체중',
-            data: [58, 57, 56, 54, 54.3, 53, 54]
+            data: weight_data
         }
     ]
 };

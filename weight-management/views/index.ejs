@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>체중 관리</title>
+    </head>
+    <script src="bower_components/raphael/raphael.js"></script>
+    <script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.css">
+    <script src="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.js"></script>   
+    <!-- <script src="js/index.js"></script>   -->
+    <body>
+        <div id="chart-area"></div>
+        <script type="text/javascript">
+            var container = document.getElementById('chart-area');
+            
+            var weights = <%- JSON.stringify(weights) %>;
+            var weight_categories = [];
+            var weight_data = [];
+
+            for(var i=0; i<weights.length; i++){
+                weight_categories.push(weights[i].register_ymdt);
+                weight_data.push(weights[i].weight);
+            }
+            
+            var data = {
+                categories: weight_categories, 
+                series: [
+                    {
+                        name: '체중',
+                        data: weight_data
+                    }
+                ]
+            };
+            var options = {
+                chart: {width: 700, height: 400}
+            };
+            
+            var chart = tui.chart.lineChart(container, data, options);
+        </script>
+    </body>   
+</html>

@@ -14,13 +14,27 @@ var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/memberdata', function(req, res){
+app.get('/members', function(req, res){
     connection.query('SELECT * from Member', function(err, rows) {
         if(err) {
             console.log('error');
             throw err;
         }
         console.log('The solution is: ', rows);
+        res.send(rows);
+    });
+})
+
+app.get(['/weights', '/weights/:memberNo'], function(req, res){
+    
+    var memberNo = req.params.memberNo;
+    var query = 'SELECT * FROM Weight';
+    if(memberNo){
+        query = query +" WHERE member_no = '" + memberNo +"'";
+    }
+    console.log(query);
+    connection.query(query, function(err, rows) {
+        if(err) { throw err; }
         res.send(rows);
     });
 })

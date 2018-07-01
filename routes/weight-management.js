@@ -1,5 +1,4 @@
 var express=require('express');
-var app = express();
 var router = express.Router();
 
 // mySql 통신 추가
@@ -12,10 +11,7 @@ var connection = mySql.createConnection({
     database : 'weight_management'
 });
 
-console.log('I am here!');
-
 router.get('/members', function(req, res){
-    console.log('I am Members');
     connection.query('SELECT * from Member', function(err, rows) {
         if(err) { throw err; }
         res.send(rows);

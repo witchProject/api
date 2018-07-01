@@ -1,13 +1,11 @@
 {
-  "name": "weight-management",
+  "name": "api",
   "version": "1.0.0",
-  "description": "welcome withham's weight management program!",
+  "description": "welcome withham' witch homepage API!",
   "main": "app.js",
   "dependencies": {
-    "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "mysql": "^2.15.0",
-    "tui-chart": "^3.1.2"
+    "mysql": "^2.15.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -16,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fpdjsns/Weight-management.git"
+    "url": "git+https://github.com/witchProject/api.git"
   },
   "author": "withham1",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fpdjsns/Weight-management/issues"
+    "url": "https://github.com/witchProject/api/issues"
   },
-  "homepage": "https://github.com/fpdjsns/Weight-management#readme"
+  "homepage": "https://github.com/witchProject/api#readme"
 }

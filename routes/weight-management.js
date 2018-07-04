@@ -16,7 +16,7 @@ router.get('/members', function(req, res){
         if(err) { throw err; }
         res.send(rows);
     });
-})
+});
 
 router.get(['/weights', '/weights/:memberNo'], function(req, res){
     
@@ -30,6 +30,20 @@ router.get(['/weights', '/weights/:memberNo'], function(req, res){
         if(err) { throw err; }
         res.send(rows);
     });
-})
+});
+
+router.get('/login/naver', function(req, res){
+    console.log("It is Naver Login!");
+    var clientId = "네이버에서 받은 client_id";
+    var redirectURI = "http://127.0.0.1:3000/weight-management/login/naver/callback";
+    var state = "state 원하는거 아무 문자열";
+    api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + clientId + '&redirect_uri=' + redirectURI + '&state=' + state;
+    res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+    res.end("<a href='"+ api_url + "'><img height='50' src='http://static.nid.naver.com/oauth/small_g_in.PNG'/></a>");
+});
+
+router.get('/login/naver/callback', function(req, res){
+    console.log("It is Naver Login callback!");
+});
 
 module.exports = router;
